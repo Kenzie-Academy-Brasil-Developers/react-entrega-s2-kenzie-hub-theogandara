@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button } from "@mui/material";
+import { useHistory } from "react-router-dom";
 
 const Cadastro = () => {
+  const history = useHistory();
 
   const formSchema = yup.object().shape({
     email: yup.string().required("Informe o seu email").email("Email inválido"),
@@ -40,7 +41,12 @@ const Cadastro = () => {
           <input type="text" placeholder="Nome" {...register("name")} />
           <p>{errors.name?.message}</p>
 
-          <input type="text" text placeholder="Biografia" {...register("bio")} />
+          <input
+            type="text"
+            text
+            placeholder="Biografia"
+            {...register("bio")}
+          />
           <p>{errors.bio?.message}</p>
 
           <input type="text" placeholder="Contato" {...register("contact")} />
@@ -53,10 +59,11 @@ const Cadastro = () => {
           />
           <p>{errors.course_module?.message}</p>
 
-
-          <button type="submit" >Cadastrar</button>
+          <button type="submit">Cadastrar</button>
         </form>
       </div>
+
+      <button onClick={()=>history.push("/")}>Login</button>
     </>
   );
 };
