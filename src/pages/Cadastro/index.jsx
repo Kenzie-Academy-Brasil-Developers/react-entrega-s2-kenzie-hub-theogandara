@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
+import api from "../../services/api";
 
-const Cadastro = () => {
+const Cadastro = ({autenticated}) => {
   const history = useHistory();
 
   const formSchema = yup.object().shape({
@@ -24,8 +25,19 @@ const Cadastro = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    api
+      .post("/users", data)
+      .then((response) => {
+        console.log(response);
+        console.log("sucesso");
+        history.push("/")
+      })
+      .catch((_)=>console.log("erro"));
   };
+
+  if(autenticated){
+    return <Redirect to="/perfil"/>
+  }
 
   return (
     <>
@@ -63,7 +75,7 @@ const Cadastro = () => {
         </form>
       </div>
 
-      <button onClick={()=>history.push("/")}>Login</button>
+      <button onClick={() => history.push("/")}>Login</button>
     </>
   );
 };

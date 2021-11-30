@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
+import api from "../../services/api";
 
-const Login = () => {
+const Login = ({ autenticated, setAutenticated }) => {
   const history = useHistory();
 
   const formSchema = yup.object().shape({
@@ -20,9 +21,28 @@ const Login = () => {
   });
 
   const onSubmit = (data) => {
-    history.push("/perfil")
-    console.log(data);
+    api
+      .post("/sessions", data)
+      .then((response) => {
+        console.log(response);
+        localStorage.setItem(
+          "@kenziehub:token",
+          JSON.stringify(response.data.token)
+        );
+        localStorage.setItem(
+          "@kenziehub:user",
+          JSON.stringify(response.data.user)
+        );
+        setAutenticated(true)
+        console.log("sucesso");
+        history.push("/perfil");
+      })
+      .catch((_) => console.log("erro"));
   };
+
+  if(autenticated){
+    return <Redirect to="/perfil"/>
+  }
 
   return (
     <>
@@ -36,7 +56,7 @@ const Login = () => {
 
         <button type="submit">ok</button>
       </form>
-      <button onClick={()=>history.push("/cadastro")}>Cadastre-se</button>
+      <button onClick={() => history.push("/cadastro")}>Cadastre-se</button>
     </>
   );
 };
