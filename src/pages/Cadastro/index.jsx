@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory,Link } from "react-router-dom";
 import api from "../../services/api";
 
 const Cadastro = ({autenticated}) => {
@@ -12,7 +12,7 @@ const Cadastro = ({autenticated}) => {
     password: yup.string().required("Cadastre uma senha").min(6, "Senha fraca"),
     name: yup.string().required("Informe seu nome"),
     bio: yup.string().required("Insira uma biografia"),
-    contact: yup.string().required("Insira um contato"),
+    contact: yup.string().required("Insira um número de telefone"),
     course_module: yup.string().required("Qual seu modulo"),
   });
 
@@ -75,7 +75,7 @@ const Cadastro = ({autenticated}) => {
         </form>
       </div>
 
-      <button onClick={() => history.push("/")}>Login</button>
+      <Link to="/">Já tenho uma conta</Link>
     </>
   );
 };

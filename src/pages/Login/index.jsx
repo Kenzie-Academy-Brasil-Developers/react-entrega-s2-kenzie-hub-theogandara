@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Redirect, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import api from "../../services/api";
 
 const Login = ({ autenticated, setAutenticated }) => {
@@ -46,7 +46,7 @@ const Login = ({ autenticated, setAutenticated }) => {
 
   return (
     <>
-      <h2>Login</h2>
+      <h2>Kenzie Hub</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input type="text" placeholder="Email" {...register("email")} />
         <p>{errors.email?.message}</p>
@@ -54,10 +54,10 @@ const Login = ({ autenticated, setAutenticated }) => {
         <input type="password" placeholder="Senha" {...register("password")} />
         <p>{errors.password?.message}</p>
 
-        <button type="submit">ok</button>
+        <button type="submit">Entrar</button>
       </form>
-      <button onClick={() => history.push("/cadastro")}>Cadastre-se</button>
-    </>
+      <Link to="/cadastro">Não tem uma conta ?</Link>
+      </>
   );
 };
 export default Login;

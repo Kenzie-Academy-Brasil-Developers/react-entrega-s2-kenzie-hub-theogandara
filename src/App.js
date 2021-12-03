@@ -1,3 +1,5 @@
+
+import "./assets/reset.css"
 import "./App.css";
 import Routes from "./routes/Routes";
 

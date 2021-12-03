@@ -1,17 +1,135 @@
 .App {
   text-align: center;
+  font-family: sans-serif;
 }
 
 .App-header {
-  background-color: #fff;
+  background-color: #f7f7f7;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #00356b;
 }
 
-p,h2,span{
-  color: #00356b;
+nav {
+  margin-top: 10px;
+  display: flex;
+  height: 60px;
+  border-radius: 10px;
+  background: #fff;
+  width: 95%;
+  padding: 0px 10px;
+  box-shadow: 2px 14px 28px rgb(0 0 0 / 25%);
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+  width: 100%;
+}
+
+li {
+  list-style: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+ul{
+  height: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.list_work,
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 4px;
+  border-radius: 4px;
+  background-color: #2fd3de;
+  height: 80px;
+  width: 80%;
+  color: #fff;
+  margin-top: 5px;
+}
+
+.list_work{
+  background-color: #34afec;
+  height: 120px;
+}
+
+h2 {
+  margin-top: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+img{
+  height: 50px;
+  width: 50px;
+}
+
+.techs,
+.works,
+.perfil {
+  width: 28%;
+  min-width: 220px;
+  display: flex;
+  color: #000;
+  font-family: sans-serif;
+  height: 500px;
+  border-radius: 8px;
+  box-shadow: 2px 14px 28px rgb(0 0 0 / 25%);
+  background-color: #fff;
+  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  margin: 10px 0px 10px 0px;
+}
+
+p {
+  color: red;
+  font-size: 13px;
+}
+
+input {
+  margin: 2px;
+  height: 20px;
+}
+
+a {
+  font-size: 15px;
+}
+
+button {
+  font-size: 14px;
+  background-color: #00356b;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 600;
+  border: none;
+  border: none;
+  padding: 6px;
+  text-decoration: none;
+  cursor: pointer;
 }
